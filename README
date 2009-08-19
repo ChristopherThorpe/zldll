@@ -1,0 +1,9 @@
+1) A windows dll to pull installation dir of World Of Warcraft via the win32 registry API
+2) Built using mingw
+3) The Makefile expects mingw to be installed in c:\MinGW (as as required)
+4) Major Files:
+   zugslist_dll.c
+     - The source file to the lone method present in the dll.
+     - Expects the call to handle memory for the char buffer which stores the dir location
+   use_zugslist_dll.c
+     - The example program which uses wow_install_root
