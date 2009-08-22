@@ -1,5 +1,5 @@
 zugslist_jni_dll:
-	c:\MinGW\bin\gcc.exe -o zugslist_jni.dll -shared -Wall -Wl,-soname -I"c:\Program Files\Java\jdk1.5.0_20\include" -I"c:\Program Files\Java\jdk1.5.0_20\include\win32" zugslist_jni_dll.c -static
+	c:\MinGW\bin\gcc.exe -o zugslist_jni.dll -shared -Wall -D_JNI_IMPLEMENTATION_ -Wl,--kill-at -I"c:\Program Files\Java\jdk1.5.0_20\include" -I"c:\Program Files\Java\jdk1.5.0_20\include\win32" zugslist_jni_dll.c -static
 zugslist_dll:
 	c:\MinGW\bin\gcc.exe -shared zugslist_dll.c -o zugslist_dll.dll
 zugslist_user:

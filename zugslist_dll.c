@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <winreg.h>
+#include <stdlib.h>
 
 #include "zugslist_dll.h"
 

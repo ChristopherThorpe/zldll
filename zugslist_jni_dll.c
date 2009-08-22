@@ -27,8 +27,9 @@ int wow_install_root(char *buff, DWORD *buff_size) {
 		__out_opt    LPDWORD lpType,
 		__out_opt    LPBYTE lpData,
 		__inout_opt  LPDWORD lpcbData
-	);
+	   );
 	*/
+	
 	status = RegQueryValueEx(wow_key, "InstallPath", NULL, &var_type, buff, buff_size);
 	RegCloseKey (wow_key);
 	
@@ -38,13 +39,14 @@ int wow_install_root(char *buff, DWORD *buff_size) {
 JNIEXPORT jstring JNICALL Java_Uploader_getWoWPath(JNIEnv *jenv, jobject jobj) {
 	DWORD buff_size = 6;
 	char *buff = (char *)malloc(buff_size);
+	jstring wow_path;
 	LONG status = wow_install_root(buff, &buff_size);
-  
+    
 	if( status == ERROR_MORE_DATA ) {
 		buff = (char *)realloc((void *)buff, buff_size);
 		status = wow_install_root(buff, &buff_size);
 	}
-	jstring wow_path = (*jenv)->NewStringUTF(jenv,buff);
+	wow_path = (*jenv)->NewStringUTF(jenv,buff);
 	free((void *)buff);
 	return wow_path;
 }
