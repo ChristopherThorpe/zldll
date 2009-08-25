@@ -40,8 +40,10 @@ JNIEXPORT jstring JNICALL Java_Uploader_getWoWPath(JNIEnv *jenv, jobject jobj) {
 	DWORD buff_size = 6;
 	char *buff = (char *)malloc(buff_size);
 	jstring wow_path;
-	LONG status = wow_install_root(buff, &buff_size);
-    
+	LONG status;
+
+	memset(buff, '\0',6);
+	status = wow_install_root(buff, &buff_size);
 	if( status == ERROR_MORE_DATA ) {
 		buff = (char *)realloc((void *)buff, buff_size);
 		status = wow_install_root(buff, &buff_size);
